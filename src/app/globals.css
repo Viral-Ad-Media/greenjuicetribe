@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-nunito), ui-rounded, system-ui, sans-serif;
+
+  /* Brand green sampled from the Green Juice logo */
+  --color-leaf-50: #f3f9ee;
+  --color-leaf-100: #e3f1d8;
+  --color-leaf-200: #c8e3b3;
+  --color-leaf-300: #a5d185;
+  --color-leaf-400: #8cc265;
+  --color-leaf-500: #74b44a;
+  --color-leaf-600: #5a9137;
+  --color-leaf-700: #46702d;
+  --color-leaf-800: #3a5a28;
+  --color-leaf-900: #314c24;
+  --color-ink: #1f2a1a;
+  --color-cream: #fbfaf5;
+  --color-citrus: #f0c14b;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+/* Article body */
+.article {
+  @apply prose prose-lg max-w-none prose-headings:font-display prose-headings:text-ink
+    prose-h2:mt-12 prose-h2:text-3xl prose-h3:text-xl
+    prose-a:text-leaf-700 prose-a:decoration-leaf-300 prose-a:underline-offset-4 hover:prose-a:decoration-leaf-600
+    prose-img:rounded-2xl prose-img:mx-auto prose-img:max-h-[420px] prose-img:w-auto prose-img:bg-white prose-img:p-4 prose-img:shadow-sm
+    prose-blockquote:border-l-leaf-400 prose-blockquote:bg-leaf-50 prose-blockquote:py-1 prose-blockquote:not-italic prose-blockquote:rounded-r-xl
+    prose-table:text-base prose-th:bg-leaf-50 prose-th:px-3 prose-td:px-3;
+}
+
+/* "Check price" product links become buttons */
+.article a[href^="https://www.amazon.com/"] {
+  @apply inline-flex items-center gap-2 rounded-full bg-citrus px-5 py-2 text-base font-semibold text-ink no-underline shadow-sm transition hover:brightness-95;
+}
+.article a[href^="https://www.amazon.com/"]::after {
+  content: "→";
+}
+.article li a[href^="https://www.amazon.com/"] {
+  @apply px-3 py-0.5 text-sm;
+}
